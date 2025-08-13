@@ -34,12 +34,22 @@ green = pygame.Color(0,255,0)
 blue = pygame.Color(0,0,255)
 
 def game_over():
+    game_window.fill(white)
+    # Display game over message
     my_font = pygame.font.SysFont('Arial', 90)
     game_over_surface = my_font.render('YOU DIED', True, red)
     game_over_rect = game_over_surface.get_rect()
     game_over_rect.midtop = (360, 120)
-    game_window.fill(black)
     game_window.blit(game_over_surface, game_over_rect)
+
+    # Display Score
+    score_font = pygame.font.SysFont('Arial', 50)
+    score_surface = score_font.render('Score : ' + str(score), True, black)
+    score_rect = score_surface.get_rect()
+    score_rect.midtop = (360, 220)
+    game_window.blit(score_surface, score_rect)
+
+    # Refresh game screen
     pygame.display.flip()
     time.sleep(3)
     pygame.quit()
